@@ -1,0 +1,384 @@
+{% load static %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Details</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        .song-play-area {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background-color: #262626;
+    padding: 15px 30px 20px;
+    border: 1px solid #363636;
+    }
+
+
+        .song-play-area .audioplayer {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: auto;
+        align-items: center;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        }
+
+        .audioplayer {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        box-sizing: border-box;
+        margin: 1em 0;
+        padding: 0 24px;
+        width: 100%;
+        height: 96px;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        border: 1px solid #dde2e6;
+        border-radius: 4px;
+        background: #fff;
+        }
+        .single-song-area {
+    position: relative;
+    z-index: 1;
+    .song-thumbnail {
+        position: relative;
+        z-index: 1;
+        @include flex(0 0 135px);
+        max-width: 135px;
+        width: 135px;
+        margin-right: 50px;
+        img {
+            width: 100%;
+        }
+        @media #{$breakpoint-xs} {
+            margin-right: 0;
+            @include flex(0 0 100%);
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+        .song-play-area {
+            position: relative;
+            z-index: 1;
+            @include flex(0 0 calc(100% - 185px));
+            max-width: calc(100% - 185px);
+            width: calc(100% - 185px);
+            background-color: #262626;
+            padding: 15px 30px 20px;
+            @media #{$breakpoint-xs} {
+                @include flex(0 0 100%);
+                max-width: 100%;
+                width: 100%;
+            }
+            .song-name p {
+                color: #b8b8b8;
+                margin-bottom: 5px;
+            }
+            .audioplayer {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: auto;
+                align-items: center;
+                border: none;
+                border-radius: 0;
+                background: transparent;
+            }
+            .audioplayer-playing .audioplayer-playpause,
+            .audioplayer:not(.audioplayer-playing) .audioplayer-playpause:hover,
+            .audioplayer:not(.audioplayer-playing) .audioplayer-playpause {
+                background: #fff;
+            }
+            .audioplayer-time {
+                font-size: 14px;
+                color: #fff;
+            }
+        }
+    }
+
+    .song-play-area {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        background-color: #262626;
+        padding: 15px 30px 20px;
+        border: 1px solid #363636;
+        .song-name p {
+            color: #b8b8b8;
+            margin-bottom: 5px;
+        }
+        .audioplayer {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: auto;
+            align-items: center;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+        }
+        .audioplayer-playing .audioplayer-playpause,
+        .audioplayer:not(.audioplayer-playing) .audioplayer-playpause:hover,
+        .audioplayer:not(.audioplayer-playing) .audioplayer-playpause {
+            background: #fff;
+        }
+        .audioplayer-time {
+            font-size: 14px;
+            color: #fff;
+        }
+    }
+
+
+
+
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+        --blue: #007bff;
+        --indigo: #6610f2;
+        --purple: #6f42c1;
+        --pink: #e83e8c;
+        --red: #dc3545;
+        --orange: #fd7e14;
+        --yellow: #ffc107;
+        --green: #28a745;
+        --teal: #20c997;
+        --cyan: #17a2b8;
+        --white: #fff;
+        --gray: #6c757d;
+        --gray-dark: #343a40;
+        --primary: #007bff;
+        --secondary: #6c757d;
+        --success: #28a745;
+        --info: #17a2b8;
+        --warning: #ffc107;
+        --danger: #dc3545;
+        --light: #f8f9fa;
+        --dark: #343a40;
+        --breakpoint-xs: 0;
+        --breakpoint-sm: 576px;
+        --breakpoint-md: 768px;
+        --breakpoint-lg: 992px;
+        --breakpoint-xl: 1200px;
+        --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        font-family: "Archivo Narrow", sans-serif;
+        font-size: 14px;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        flex-direction: row;
+        box-sizing: border-box;
+        -webkit-box-align: center;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: auto;
+        align-items: center;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+
+
+
+
+
+                .controlsContainer {
+  --clickToPlay-size: 48px;
+  --button-size: 30px;
+  --timer-size: 40px;
+  --timer-long-size: 60px;
+  --track-size: 5px;
+  --thumb-size: 13px;
+  --label-font-size: 13px;
+  --pip-toggle-bgcolor: rgb(0, 96, 223);
+  --pip-toggle-text-and-icon-color: rgb(255, 255, 255);
+  --pip-toggle-padding: 5px;
+  --pip-toggle-icon-width-height: 16px;
+}
+
+.controlsContainer.touch {
+  --clickToPlay-size: 64px;
+  --button-size: 40px;
+  --timer-size: 52px;
+  --timer-long-size: 78px;
+  --track-size: 7px;
+  --thumb-size: 16px;
+  --label-font-size: 16px;
+}
+
+.timeline {
+  width: calc(100% - (var(--player-button-width) + var(--sound-button-width) + var(--space)));
+  margin-right: var(--space);
+}
+
+.sound-button {
+  background-color: transparent;
+  border: 0;
+  width: var(--sound-button-width);
+  height: var(--sound-button-width);
+  cursor: pointer;
+  padding: 0;
+}
+    </style>
+
+</head>
+<body style="background-color:black">
+
+
+    <!-- ##### Header Area Start ##### -->
+<header class="header-area">
+        <!-- Navbar Area -->
+        <div class="oneMusic-main-menu bg-dark">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar  justify-content-between" id="oneMusicNav">
+
+                        <!-- Nav brand -->
+                        <a href="index.html" class="nav-brand text-white" >MUSIC</a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                             <div class="classynav">
+                                <ul>
+                                    <li><a href="{% url 'music:home' %}">Home</a></li>
+                                    <li><a href="{% url 'music:album' %}">Albums</a></li>
+                                    <li><a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{% url 'music:home' %}">Home</a></li>
+                                            <li><a href="{% url 'music:album' %}">Albums</a></li>
+                                            <li><a href="{% url 'music:events' %}">Events</a></li>
+                                            <li><a href="{% url 'music:blog' %}">News</a></li>
+                                            <li><a href="{% url 'music:contact' %}">Contact</a></li>
+                                            {% if user.is_superuser %}
+                                            <li><a href="{% url 'admin:index' %}">Add Event</a></li>
+                                            {% endif %}
+
+                                        </ul>
+                                    </li>
+                                    {% if user.is_superuser %}
+                                    <li><a href="{% url 'admin:index' %}">Add song</a></li>
+                                    {% endif %}
+                                    <li><a href="{% url 'music:blog' %}">News</a></li>
+                                    <li><a href="{% url 'music:contact' %}">Contact</a></li>
+
+                                </ul>
+
+                                <!-- Login/Register & Cart Button -->
+                                <div class="login-register-cart-button d-flex align-items-center">
+                                    <!-- Login/Register -->
+                                    {% if user.is_authenticated %}
+                                    <div class="login-register-btn mr-50">
+
+                                        <a href="{% url 'music:logout' %}" id="logoutBtn">Logout</a>
+
+
+                                    </div>
+                                    {% else %}
+                                    <div class="login-register-btn mr-50">
+
+                                        <a href="{% url 'music:register' %}" id="loginBtn">Login / Register</a>
+                                    </div>
+                                    {% endif %}
+
+                                    <!-- Cart Button -->
+<!--                                    <div class="cart-btn">-->
+<!--                                        <p><span class="icon-shopping-cart"></span> <span class="quantity">1</span></p>-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                            <!-- Nav End -->
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+<div class="song-play-area" style="width:70%;margin-left:18%;margin-top:150px;border-radius:10px;margin-bottom:500px;" >
+                <center>
+                            <div class="song-name">
+                                <img src="{{m.image.url}}" height="153px" width="93px" >
+                            </div>
+                            <div class="song-name">
+                                <p>Name :<span class="text-secondary"> {{m.name}}</span></p>
+                            </div>
+                            <div class="song-name">
+                                <p>Singer :<span class="text-secondary"> {{m.singer}}</span></p>
+                            </div>
+                            <div class="song-name">
+                                <p>Music Composer :<span class="text-secondary"> {{m.music_composer}}</span></p>
+                            </div>
+                            <div class="song-name">
+                                <p>Release Date :<span class="text-secondary"> {{m.release_date}}</span></p>
+                            </div>
+                    </center>
+
+
+            </div>
+
+
+ </div>
+
+</div>
+</div>
+
+
+
+
+ <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- All Plugins js -->
+    <script src="{% static 'js/plugins/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
+
+</body>
+</html>
+
